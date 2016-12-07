@@ -11,6 +11,16 @@ app.get('/', function (req, res) {
   res.send('Hello world!');
 });
 
+// get starts with given url
+app.get('/get/:url', function (req, res) {
+  let url = req.params.url;
+  db.serialize(function () {
+    db.all("select * from valid_xss_checker where url like 'http%"+url+"%';", function (err, rows) {
+      res.send(rows);
+    });
+  });
+});
+
 // put successfull signal
 // update count
 app.get('/r/:rId', function (req, res) {
@@ -18,7 +28,7 @@ app.get('/r/:rId', function (req, res) {
 
   db.serialize(function () {
     let response = Object();
-    db.run("update valid_xss_checker set count=count+1 where rId=?", rId);
+    db.run("update valid_xss_checker set count=count+1, latest=CURRENT_TIMESTAMP where rId=?", rId);
     response.rId = rId;
     response.status = "success";
     res.send(response);
