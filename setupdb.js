@@ -8,7 +8,9 @@ db.serialize(function() {
            count unsigned integer default 0,\
            url           TEXT      NOT NULL,\
            form_data            text       NOT NULL,\
-           t        TIMESTAMP\
+           creation        TIMESTAMP\
+           DEFAULT CURRENT_TIMESTAMP,\
+           latest        TIMESTAMP\
            DEFAULT CURRENT_TIMESTAMP\
   );");
 });
