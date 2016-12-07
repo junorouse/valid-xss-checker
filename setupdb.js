@@ -1,6 +1,6 @@
-var sqlite3 = require('sqlite3').verbose();
+const sqlite3 = require('sqlite3').verbose();
 // var db = new sqlite3.Database(':memory:');
-var db = new sqlite3.Database('db.sqlite3');
+const db = new sqlite3.Database('db.sqlite3');
 
 db.serialize(function() {
   db.run("CREATE TABLE valid_xss_checker(\
@@ -22,7 +22,7 @@ db.serialize(function() {
       console.log(row.id + ": " + row.info);
   });
   */
-  
+
 });
 
 db.close();
