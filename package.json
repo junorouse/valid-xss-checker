@@ -1,0 +1,19 @@
+{
+  "name": "valid-xss-checker",
+  "version": "1.0.0",
+  "description": "valid xss checker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/junorouse/valid-xss-checker.git"
+  },
+  "author": "junorouse",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/junorouse/valid-xss-checker/issues"
+  },
+  "homepage": "https://github.com/junorouse/valid-xss-checker#readme"
+}
