@@ -13,7 +13,7 @@ class App extends React.Component {
 class SiteInfo extends React.Component {
     render() {
         return(
-            <li>{this.props.rId} - {this.props.url}, {this.props.count}, {this.props.creation}, {this.props.latest}</li>
+            <li>{this.props.rId} - {this.props.url}, {this.props.referer}, {this.props.count}, {this.props.creation}, {this.props.latest}</li>
         );
     }
 }
@@ -45,6 +45,7 @@ class SiteList extends React.Component {
           return (
             <SiteInfo rId={r.rId}
               url={r.url}
+              referer={r.referer}
               count={r.count}
               creation={r.creation}
               latest={r.latest}
