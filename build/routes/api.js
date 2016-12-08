@@ -13,7 +13,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var router = _express2.default.Router();
 
 var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('db.sqlite3');
+var db = new sqlite3.Database('../db/db.sqlite3');
 
 // get starts with given url
 router.get('/get/:url', function (req, res) {
