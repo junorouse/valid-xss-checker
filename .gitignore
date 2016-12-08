@@ -10,7 +10,7 @@ lib-cov
 coverage
 .nyc_output
 .lock-wscript
-build/Release
+build/
 node_modules
 jspm_packages
 .npm
@@ -21,3 +21,6 @@ jspm_packages
 
 # database
 db.sqlite3
+
+# react build
+bundle.js
