@@ -13,6 +13,7 @@ coverage
 build/**
 build/*
 build/
+!build/.gitkeep
 node_modules
 jspm_packages
 .npm
