@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/junorouse/valid-xss-checker#readme",
   "dependencies": {
+    "axios": "^0.15.3",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "react": "^15.4.1",
