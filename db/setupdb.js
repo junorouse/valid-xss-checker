@@ -7,6 +7,7 @@ db.serialize(function() {
            rId integer primary key   autoincrement,\
            count unsigned integer default 0,\
            url           TEXT      NOT NULL,\
+           referer           TEXT default 'nothing',\
            form_data            text       NOT NULL,\
            creation        TIMESTAMP\
            DEFAULT CURRENT_TIMESTAMP,\
