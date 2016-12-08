@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+let port = 8080;
+
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('db.sqlite3');
 
@@ -68,8 +70,6 @@ app.post('/new', function (req, res) {
   }
 });
 
-const server = app.listen(8080, function () {
-  const host = server.address().address;
-  const port = server.address().port;
-  console.log("run => http://%s:%s", host, port);
+const server = app.listen(port, () => {
+  console.log("run port => ", port);
 });
