@@ -62,7 +62,7 @@ class SiteList extends React.Component {
     }
   }
   getList() {
-    axios.get('/api/get/xss.com')
+    axios.get('/api/get/'+this.state.url)
       .then( response => {
         this.setState({
             responseData: response.data

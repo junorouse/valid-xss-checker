@@ -19,10 +19,12 @@ router.get('/get/:url', function (req, res) {
 // update count
 router.get('/r/:rId', function (req, res) {
   const rId = req.params.rId;
+  const referer = req.header('Referer');
+  console.log(referer);
 
   db.serialize(function () {
     let response = Object();
-    db.run("update valid_xss_checker set count=count+1, latest=CURRENT_TIMESTAMP where rId=?", rId);
+    db.run("update valid_xss_checker set count=count+1, referer=?, latest=CURRENT_TIMESTAMP where rId=?", referer, rId);
     response.rId = rId;
     response.status = "success";
     res.send(response);
