@@ -5,6 +5,7 @@ import webpack from 'webpack';
 const app = express();
 
 let port = 8080;
+let devPort = 7070;
 
 if(process.env.NODE_ENV == 'development') {
     console.log('Server is running on development mode');
@@ -13,7 +14,7 @@ if(process.env.NODE_ENV == 'development') {
     let compiler = webpack(config);
     let devServer = new WebpackDevServer(compiler, config.devServer);
     devServer.listen(devPort, () => {
-        console.log('webpack-dev-server is listening on port', port);
+        console.log('webpack-dev-server is listening on port', devPort);
     });
 }
 
