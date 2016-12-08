@@ -7,7 +7,7 @@
     "b": "babel server --out-dir build && ./node_modules/.bin/webpack",
     "s": "NODE_ENV=production node ./build/index.js",
     "d": "NODE_ENV=development node ./build/index.js",
-    "m": "./db/setupdb.js"
+    "m": "rm -rf ./db/db.sqlite3 && ./db/setupdb.js"
   },
   "repository": {
     "type": "git",
