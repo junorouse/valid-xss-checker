@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('build/db/db.sqlite3');
+const db = new sqlite3.Database('db/db.sqlite3');
 
 
 // get starts with given url
