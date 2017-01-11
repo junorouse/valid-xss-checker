@@ -9,7 +9,7 @@ const db = new sqlite3.Database('db/db.sqlite3');
 router.get('/get/:url', function (req, res) {
   let url = req.params.url;
   db.serialize(function () {
-    db.all("select * from valid_xss_checker where url like 'http%"+url+"%';", function (err, rows) {
+    db.all("select * from valid_xss_checker where nickname like '%"+url+"%';", function (err, rows) {
       res.send(rows);
     });
   });
@@ -33,12 +33,19 @@ router.get('/r/:rId', function (req, res) {
 
 router.post('/new', function (req, res) {
   let url = "";
+  let nickname = "";
+
+  if (req.body.nickname) {
+    nickname = req.body.nickname;
+  } else {
+    nickname = "default";
+  }
+
   if (req.body.url) {
     url = req.body.url
   } else {
     url = "http://default.com/";
   }
-  // TODO : query parser to json
   let form_data = {};
   if (req.body.form_data) {
     form_data = req.body.form_data;
@@ -48,8 +55,8 @@ router.post('/new', function (req, res) {
 
   try {
     db.serialize(function () {
-      const insert = db.prepare("insert into valid_xss_checker (url, form_data) values (?, ?)");
-      insert.run(url, form_data);
+      const insert = db.prepare("insert into valid_xss_checker (nickname, url, form_data) values (?, ?, ?)");
+      insert.run(nickname, url, form_data);
       insert.finalize();
       db.each("select last_insert_rowid() from valid_xss_checker limit 1;", function (err, row) {
         let response = Object();

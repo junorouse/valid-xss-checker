@@ -19,7 +19,8 @@ if(process.env.NODE_ENV == 'development') {
 }
 
 let bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser());
 
 app.use('/', express.static(__dirname + '/../public'));
 

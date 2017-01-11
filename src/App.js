@@ -27,8 +27,15 @@ class AddSite extends React.Component {
   constructor(props) {
     super(props);
     this.handleAddUrl = this.handleAddUrl.bind(this);
+    this.handleFormData = this.handleFormData.bind(this);
+    this.handleNickname = this.handleNickname.bind(this);
+
+    this.addList = this.addList.bind(this);
+    this.keyDownCheck = this.keyDownCheck.bind(this);
     this.state = {
-      "addUrl": "default"
+      "addUrl": "default",
+      "formData": "default",
+      "nickname": "default"
     }
   }
 
@@ -36,8 +43,9 @@ class AddSite extends React.Component {
     return (
       <div>
         <h3>Add Site</h3>
-        <input type="text" placeholder="url" onChange={this.handleAddUrl}/><br />
-        <input type="text" placeholder="form_data" /><br />
+        <input type="text" placeholder="nick name" onChange={this.handleNickname} />
+        <input type="text" placeholder="url" onChange={this.handleAddUrl} onKeyDown={this.keyDownCheck} /><br />
+        <input type="text" placeholder="form_data" onChange={this.handleFormData} onKeyDown={this.keyDownCheck} /><br />
         <span>{this.state.addUrl}</span>
       </div>
     )
@@ -47,6 +55,37 @@ class AddSite extends React.Component {
     this.setState({
       addUrl: event.target.value
     });
+  }
+
+  handleFormData(event) {
+    this.setState({
+      formData: event.target.value
+    });
+  }
+
+  handleNickname(event) {
+    this.setState({
+      nickname: event.target.value
+    })
+  }
+
+  keyDownCheck(event) {
+    if (event.keyCode == 13) {
+      this.addList();
+    }
+  }
+
+  addList() {
+    axios.post('/api/new/', {
+      nickname: this.state.nickname,
+      url: this.state.addUrl,
+      form_data: this.state.formData
+    })
+      .then( response => {
+        this.setState({
+            responseData: response.data
+      })})
+      .catch( response => { console.dir(response); } );
   }
 }
 
